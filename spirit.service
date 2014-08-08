@@ -1,0 +1,9 @@
+[Unit]
+Description=Spirit (DeployStudio Server replacement)
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStartPre=/usr/bin/docker pull macadmins/spirit
+ExecStart=/bin/bash -c '/usr/bin/docker start -a spirit || /usr/bin/docker run -i -t --name spirit -p 60080:60080 macadmins/spirit'
+ExecStop=/usr/bin/docker stop spirit

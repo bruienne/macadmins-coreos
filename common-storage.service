@@ -1,0 +1,7 @@
+[Unit]
+Description=Common Storage
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/bin/bash -c '/usr/bin/docker start -a common-storage || /usr/bin/docker run -v /data/munki -v /data/sal -v /data/crypt -v /data/spirit -v /data/bsdpy -v /data/reposado -v /data/margarita -v /data/mwa --name common-storage busybox /bin/true'
