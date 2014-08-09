@@ -5,5 +5,5 @@ Requires=common-storage.service
 After=docker.service
 
 [Service]
-ExecStart=/bin/bash -c '/usr/bin/docker start -a spirit-dev || /usr/bin/docker run -i -t --name spirit-dev --volumes-from common-storage -p 60080:60080 macadmins/spirit-dev /sbin/my_init'
-ExecStop=/usr/bin/docker stop spirit-dev
+ExecStart=-/bin/bash -c '/usr/bin/docker start -a spirit-dev || /usr/bin/docker run -it --rm --name spirit-dev --volumes-from common-storage -p 60080:60080 macadmins/spirit-dev /sbin/my_init'
+ExecStop=-/usr/bin/docker stop spirit-dev

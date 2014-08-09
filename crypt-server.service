@@ -4,6 +4,6 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-ExecStartPre=/usr/bin/docker pull macadmins/crypt-server
-ExecStart=/bin/bash -c '/usr/bin/docker start -a crypt-server || /usr/bin/docker run -i -t --name crypt-server --volumes-from common-storage -p 8000:8000 macadmins/crypt-server'
-ExecStop=/usr/bin/docker stop crypt-server
+ExecStartPre=-/usr/bin/docker pull macadmins/crypt-server
+ExecStart=-/bin/bash -c '/usr/bin/docker start -a crypt-server || /usr/bin/docker run -it --rm --name crypt-server --volumes-from common-storage -p 8000:8000 macadmins/crypt-server'
+ExecStop=-/usr/bin/docker stop crypt-server

@@ -5,5 +5,5 @@ After=docker.service
 
 [Service]
 ExecStartPre=/bin/bash -c 'if [[ ! $(docker images | grep munkireport) ]]; then /usr/bin/docker pull macadmins/munkireport-php; fi'
-ExecStart=/bin/bash -c '/usr/bin/docker start -a munkireport-php || /usr/bin/docker run -i -t --name munkireport-php --volumes-from common-storage -p 80:80 macadmins/munkireport-php'
-ExecStop=/usr/bin/docker stop munkireport-php
+ExecStart=-/bin/bash -c '/usr/bin/docker start -a munkireport-php || /usr/bin/docker run -it --rm --name munkireport-php --volumes-from common-storage -p 80:80 macadmins/munkireport-php'
+ExecStop=-/usr/bin/docker stop munkireport-php
